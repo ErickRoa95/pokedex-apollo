@@ -34,6 +34,18 @@ const pokemonResolvers = {
       }catch(error){
         throw new Error(error);
       }
+    },
+    updatePokemon: async (_, {input}) => {
+      try{
+        const updatePokemon = await Pokemons.findOneAndUpdate(
+         { pokedex_id: input.pokedex_id},
+         input,
+         {new: true}
+        )
+        return updatePokemon;
+      }catch(error){
+        throw new Error(error);
+      }
     }
   }
 }
