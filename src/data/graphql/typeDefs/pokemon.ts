@@ -37,6 +37,22 @@ const pokemonSchema = gql` #gql
     NORMAL
     ICE
   }
+
+  input PokemonInput {
+    id: ID
+    pokedex_id: Int!
+    name: String!
+    ability: String!
+    pokemon_types: [PokemonTypeInput]!
+  }
+
+  input PokemonTypeInput{
+    pokemon_type: Element
+  }
+
+  type Mutation{
+    addPokemon(input: PokemonInput): Pokemon
+  }
 `;
 
 export default pokemonSchema;

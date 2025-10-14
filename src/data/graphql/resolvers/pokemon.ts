@@ -17,7 +17,24 @@ const pokemonResolvers = {
       }catch(error){
         throw new Error(error);
       }
-    },
+    }
+  },
+  Mutation:{
+    addPokemon: async (_, {input}) =>{
+      const newPokemon = new Pokemons({
+        name: input.name, 
+        ability: input.ability, 
+        pokedex_id: input.pokedex_id,
+        pokemon_types: input.pokemon_types,
+      });
+      newPokemon.id = newPokemon._id;
+      try{
+        await newPokemon.save();
+        return newPokemon;
+      }catch(error){
+        throw new Error(error);
+      }
+    }
   }
 }
 
