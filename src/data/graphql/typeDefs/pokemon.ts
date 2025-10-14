@@ -53,6 +53,7 @@ const pokemonSchema = gql` #gql
   type Mutation{
     addPokemon(input: PokemonInput): Pokemon
     updatePokemon(input: PokemonInput): Pokemon
+    deletePokemon(pokedex_id: Int): String
   }
 `;
 

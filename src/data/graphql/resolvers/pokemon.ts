@@ -46,6 +46,16 @@ const pokemonResolvers = {
       }catch(error){
         throw new Error(error);
       }
+    },
+    deletePokemon: async(_, {pokedex_id}) =>{
+      try{
+        await Pokemons.deleteOne({
+          pokedex_id: pokedex_id,
+        })
+        return `Pokemon Id deleted: ${pokedex_id}`;
+      }catch(error){
+        throw Error(error);
+      }
     }
   }
 }
