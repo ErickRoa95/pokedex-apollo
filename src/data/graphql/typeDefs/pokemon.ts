@@ -2,15 +2,16 @@ import {gql} from "apollo-server-express";
 
 const pokemonSchema = gql` #gql
   type Query{
-    getPokemon(id: ID): Pokemon 
+    getPokemon(id: Int): Pokemon 
+    getAllPokemons: [Pokemon]
   }
 
   type Pokemon {
-    id: ID!
-    pokedex_id: Int!
-    name: String!
-    ability: String!
-    pokemon_types: [PokemonType]!
+    id: ID
+    pokedex_id: Int
+    name: String
+    ability: String
+    pokemon_types: [PokemonType]
   }
 
   type PokemonType{
@@ -53,7 +54,7 @@ const pokemonSchema = gql` #gql
   type Mutation{
     addPokemon(input: PokemonInput): Pokemon
     updatePokemon(input: PokemonInput): Pokemon
-    deletePokemon(pokedex_id: Int): String
+    deletePokemon(id: Int): String
   }
 `;
 

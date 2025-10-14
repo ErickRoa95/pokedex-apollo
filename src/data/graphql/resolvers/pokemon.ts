@@ -11,9 +11,18 @@ const pokemonResolvers = {
   Query: {
     getPokemon: async (_, {id} ) =>{
       try {
-        const result = await Pokemons.findById(id);
+        const result = await Pokemons.findOne({pokedex_id: id});
         console.log("Pokemon has been found"+result);
         return result;
+      }catch(error){
+        throw new Error(error);
+      }
+    },
+    getAllPokemons: async()=>{
+      try{
+      const result = await Pokemons.find({});
+      console.log(result);
+      return result;
       }catch(error){
         throw new Error(error);
       }
@@ -47,12 +56,12 @@ const pokemonResolvers = {
         throw new Error(error);
       }
     },
-    deletePokemon: async(_, {pokedex_id}) =>{
+    deletePokemon: async(_, {id}) =>{
       try{
         await Pokemons.deleteOne({
-          pokedex_id: pokedex_id,
+          pokedex_id: id,
         })
-        return `Pokemon Id deleted: ${pokedex_id}`;
+        return `Pokemon Id deleted: ${id}`;
       }catch(error){
         throw Error(error);
       }
