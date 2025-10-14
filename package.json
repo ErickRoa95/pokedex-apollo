@@ -4,7 +4,7 @@
   "description": "A simple implementation of Apollo Server with MongoDB to managed Pokedex information.",
   "main": "index.js",
   "scripts": {
-    "build":"tsc",
+    "build": "tsc",
     "start": "nodemon --exec ts-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +14,10 @@
   "devDependencies": {
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0"
   }
 }
